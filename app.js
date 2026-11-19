@@ -125,11 +125,6 @@
   //  RSVP
   // ============================================================
   const form = $("rsvpForm");
-  const guestsField = $("guestsField");
-
-  form.addEventListener("change", (e) => {
-    if (e.target.name === "attending") guestsField.hidden = e.target.value !== "sim";
-  });
 
   function rsvpText(d) {
     const first = `Oi, ${C.name}! 🎀`;
@@ -137,10 +132,8 @@
       return [first, `Infelizmente não vou poder ir no seu aniversário (${C.dateLabel}) 😢`, `Nome: ${d.name}`,
         d.message ? `Recado: ${d.message}` : ""].filter(Boolean).join("\n");
     }
-    const g = Number(d.guests) || 0;
     return [first, `Confirmo presença no seu aniversário de ${C.age} anos! 🥳`, `📅 ${C.dateLabel}, ${C.timeLabel}`, "",
       `Nome: ${d.name}`,
-      `Pessoas: ${g === 0 ? "só eu" : `eu + ${g} (${g + 1} no total)`}`,
       d.message ? `Recado: ${d.message}` : ""].filter((x) => x !== "").join("\n");
   }
 
@@ -148,9 +141,8 @@
     const yes = data.attending === "sim";
     $("rsvpDoneStamp").textContent = yes ? "Confirmado!" : "Resposta enviada";
     $("rsvpDoneTitle").textContent = yes ? `Te espero lá, ${data.name.split(" ")[0]}!` : `Que pena, ${data.name.split(" ")[0]}!`;
-    const g = Number(data.guests) || 0;
     $("rsvpDoneText").textContent = yes
-      ? `${g === 0 ? "Você" : `Você + ${g}`} no dia ${C.dateLabel}, às ${C.timeLabel}. Só confere se a mensagem foi enviada no WhatsApp!`
+      ? `Até o dia ${C.dateLabel}, às ${C.timeLabel}. Só confere se a mensagem foi enviada no WhatsApp!`
       : "Obrigada por avisar. Só confere se a mensagem foi enviada no WhatsApp ♡";
     $("rsvpResend").href = waLink(rsvpText(data));
     form.hidden = true;
@@ -161,8 +153,6 @@
   if (savedRsvp) {
     $("rsvpName").value = savedRsvp.name || "";
     (savedRsvp.attending === "nao" ? $("attNo") : $("attYes")).checked = true;
-    guestsField.hidden = savedRsvp.attending !== "sim";
-    $("rsvpGuests").value = savedRsvp.guests || "0";
     $("rsvpMsg").value = savedRsvp.message || "";
     showDone(savedRsvp);
   }
@@ -181,7 +171,6 @@
     const data = {
       name,
       attending,
-      guests: attending === "sim" ? $("rsvpGuests").value : "0",
       message: $("rsvpMsg").value.trim()
     };
     openWhatsApp(waLink(rsvpText(data)));
