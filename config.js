@@ -19,10 +19,6 @@ window.PARTY_CONFIG = {
   SPOTIFY_URL: "https://open.spotify.com/playlist/3MDyV9O09rb49gsg5k522I",
 
   // WhatsApp que recebe as confirmações (só números, com 55 + DDD).
-  WHATSAPP: "5584994388320",
+  WHATSAPP: "5584994388320"
 
-  // OPCIONAL: URL do Google Apps Script (veja README.md).
-  // Vazio → quem escolhe um presente avisa pelo WhatsApp.
-  // Preenchido → os presentes escolhidos aparecem como "Já escolhido" para todos.
-  APPS_SCRIPT_URL: ""
 };

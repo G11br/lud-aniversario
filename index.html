@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Lud 21 · Birthday Party</title>
-  <meta name="description" content="Aniversário de 21 anos da Lud — 9 de janeiro, 17:00. Confirme presença, veja a lista de presentes e adicione músicas na playlist.">
+  <meta name="description" content="Aniversário de 21 anos da Lud — 9 de janeiro, 17:00. Confirme presença e adicione músicas na playlist.">
   <meta property="og:title" content="Lud 21 · Birthday Party">
   <meta property="og:description" content="9 de janeiro · 17:00 · Vem comemorar comigo!!!">
   <meta property="og:image" content="https://g11br.github.io/lud-aniversario/assets/convite.jpg">
@@ -55,7 +55,6 @@
   <nav class="tabs" aria-label="Seções">
     <div class="tabs-inner" role="tablist">
       <a class="tab" role="tab" href="#presenca" data-tab="presenca" id="tab-presenca"><span class="long">Confirmar </span>Presença</a>
-      <a class="tab" role="tab" href="#presentes" data-tab="presentes" id="tab-presentes"><span class="long">Lista de </span>Presentes</a>
       <a class="tab" role="tab" href="#playlist" data-tab="playlist" id="tab-playlist">Playlist</a>
     </div>
   </nav>
@@ -117,31 +116,11 @@
         <h3 id="rsvpDoneTitle">Te espero lá!</h3>
         <p id="rsvpDoneText"></p>
         <div class="done-actions">
-          <a class="btn btn-primary" href="#presentes">Ver lista de presentes</a>
+          <a class="btn btn-primary" href="#playlist">Ver a playlist</a>
           <a class="btn btn-ghost" id="rsvpResend" href="#" target="_blank" rel="noopener">Abrir o WhatsApp de novo</a>
           <button class="btn btn-ghost" type="button" id="rsvpEdit">Mudar resposta</button>
         </div>
       </div>
-    </section>
-
-    <!-- ================= GIFTS ================= -->
-    <section class="panel" id="panel-presentes" role="tabpanel" aria-labelledby="tab-presentes" hidden>
-      <div class="panel-head">
-        <h2 class="section-title">My birthday wishlist</h2>
-        <p class="lede">Coisinhas que eu gostaria de ganhar ♡ Não precisa ser nada grandioso, o carinho está no significado! <span id="giftHowTo"></span></p>
-      </div>
-
-      <div class="gift-tools">
-        <div class="chips" id="giftChips" role="group" aria-label="Filtrar por categoria"></div>
-        <label class="toggle">
-          <input type="checkbox" id="onlyAvailable">
-          <span>Só disponíveis</span>
-        </label>
-      </div>
-
-      <p class="status-line" id="giftStatus" aria-live="polite">Carregando a lista…</p>
-      <div id="giftList" class="gift-list"></div>
-      <p class="thanks hand">Thank you for being part of my special day! ♡</p>
     </section>
 
     <!-- ================= PLAYLIST ================= -->
@@ -176,7 +155,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="config.js"></script>
-  <script src="gifts.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
