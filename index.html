@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lud 21 · Birthday Party</title>
+  <meta name="description" content="Aniversário de 21 anos da Lud — 9 de janeiro, 17:00. Confirme presença, veja a lista de presentes e adicione músicas na playlist.">
+  <meta property="og:title" content="Lud 21 · Birthday Party">
+  <meta property="og:description" content="9 de janeiro · 17:00 · Vem comemorar comigo!!!">
+  <meta property="og:image" content="assets/convite.jpg">
+  <meta name="theme-color" content="#f4ece6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bungee&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Gochi+Hand&family=Playfair+Display:ital,wght@1,700&family=Rubik+Mono+One&family=Shrikhand&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="bunting" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="age-badge" aria-hidden="true">21</p>
+        <h1 class="ransom ransom-xl" data-ransom="LUD" aria-label="Lud">LUD</h1>
+        <p class="ransom ransom-md" data-ransom="Birthday Party" aria-label="Birthday Party">Birthday Party</p>
+
+        <p class="hand when"><span id="dateLabel">9 de janeiro</span> · <span id="timeLabel">17:00</span></p>
+        <p class="hand hand-pink">Vem comemorar comigo!!!</p>
+
+        <div class="place">
+          <svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c-3.9 0-7 3.1-7 7 0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+          <div>
+            <p class="hand" id="addressLabel">Rua Nazareno Matias, 163</p>
+            <p class="hand" id="hoodLabel">Rosa dos Ventos – Parnamirim</p>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-ghost" id="mapsLink" href="#" target="_blank" rel="noopener">Ver no mapa</a>
+          <a class="btn btn-ghost" id="calLink" href="#" target="_blank" rel="noopener">Salvar na agenda</a>
+        </div>
+
+        <p class="countdown" id="countdown" aria-live="polite"></p>
+      </div>
+
+      <figure class="polaroid">
+        <img src="assets/convite.jpg" alt="Convite do aniversário de 21 anos da Lud" width="900" height="1600">
+        <figcaption class="hand">o convite ♡</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Seções">
+    <div class="tabs-inner" role="tablist">
+      <a class="tab" role="tab" href="#presenca" data-tab="presenca" id="tab-presenca"><span class="long">Confirmar </span>Presença</a>
+      <a class="tab" role="tab" href="#presentes" data-tab="presentes" id="tab-presentes"><span class="long">Lista de </span>Presentes</a>
+      <a class="tab" role="tab" href="#playlist" data-tab="playlist" id="tab-playlist">Playlist</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <!-- ================= RSVP ================= -->
+    <section class="panel" id="panel-presenca" role="tabpanel" aria-labelledby="tab-presenca">
+      <div class="panel-head">
+        <h2 class="section-title">Confirmar presença</h2>
+        <p class="lede">Me conta se você vem, assim eu sei quantas pessoas esperar. Preenche aqui e a mensagem já sai prontinha no meu WhatsApp, é só enviar. Se puder, responde até <strong>2 de janeiro</strong>.</p>
+      </div>
+
+      <form class="card rsvp" id="rsvpForm" novalidate>
+        <div class="field">
+          <label for="rsvpName">Seu nome</label>
+          <input id="rsvpName" name="name" type="text" autocomplete="name" placeholder="Nome e sobrenome" required maxlength="80">
+          <p class="error" id="rsvpNameError" hidden>Escreve seu nome para eu saber quem é.</p>
+        </div>
+
+        <fieldset class="field">
+          <legend>Você vem?</legend>
+          <div class="choice-row">
+            <label class="choice">
+              <input type="radio" name="attending" value="sim" id="attYes" checked>
+              <span>Vou sim!</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="attending" value="nao" id="attNo">
+              <span>Não vou poder</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="field" id="guestsField">
+          <label for="rsvpGuests">Quantas pessoas vêm com você?</label>
+          <select id="rsvpGuests" name="guests">
+            <option value="0">Só eu</option>
+            <option value="1">Eu + 1</option>
+            <option value="2">Eu + 2</option>
+            <option value="3">Eu + 3</option>
+            <option value="4">Eu + 4</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="rsvpMsg">Recadinho para a Lud <span class="opt">(opcional)</span></label>
+          <textarea id="rsvpMsg" name="message" rows="3" maxlength="500" placeholder="Escreve algo fofo ♡"></textarea>
+        </div>
+
+        <button class="btn btn-primary btn-wa" type="submit" id="rsvpSubmit">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg>
+          Confirmar pelo WhatsApp
+        </button>
+        <p class="hint">Vai abrir o WhatsApp com a mensagem pronta para <span id="waNumberLabel"></span>. Não esquece de tocar em enviar!</p>
+      </form>
+
+      <div class="card rsvp-done" id="rsvpDone" hidden>
+        <p class="stamp" id="rsvpDoneStamp">Confirmado!</p>
+        <h3 id="rsvpDoneTitle">Te espero lá!</h3>
+        <p id="rsvpDoneText"></p>
+        <div class="done-actions">
+          <a class="btn btn-primary" href="#presentes">Ver lista de presentes</a>
+          <a class="btn btn-ghost" id="rsvpResend" href="#" target="_blank" rel="noopener">Abrir o WhatsApp de novo</a>
+          <button class="btn btn-ghost" type="button" id="rsvpEdit">Mudar resposta</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GIFTS ================= -->
+    <section class="panel" id="panel-presentes" role="tabpanel" aria-labelledby="tab-presentes" hidden>
+      <div class="panel-head">
+        <h2 class="section-title">My birthday wishlist</h2>
+        <p class="lede">Coisinhas que eu gostaria de ganhar ♡ Não precisa ser nada grandioso, o carinho está no significado! <span id="giftHowTo"></span></p>
+      </div>
+
+      <div class="gift-tools">
+        <div class="chips" id="giftChips" role="group" aria-label="Filtrar por categoria"></div>
+        <label class="toggle">
+          <input type="checkbox" id="onlyAvailable">
+          <span>Só disponíveis</span>
+        </label>
+      </div>
+
+      <p class="status-line" id="giftStatus" aria-live="polite">Carregando a lista…</p>
+      <div id="giftList" class="gift-list"></div>
+      <p class="thanks hand">Thank you for being part of my special day! ♡</p>
+    </section>
+
+    <!-- ================= PLAYLIST ================= -->
+    <section class="panel" id="panel-playlist" role="tabpanel" aria-labelledby="tab-playlist" hidden>
+      <div class="panel-head">
+        <h2 class="section-title">Playlist da festa</h2>
+        <p class="lede">A trilha sonora quem faz é você. Coloca aquela música que não pode faltar na pista.</p>
+      </div>
+
+      <div class="card playlist-card">
+        <div class="vinyl" aria-hidden="true"><span></span></div>
+        <div class="playlist-body">
+          <h3>Lud aniversário</h3>
+          <ol class="steps">
+            <li>Toque em <strong>Abrir no Spotify</strong>.</li>
+            <li>Se aparecer, aceite o convite para colaborar.</li>
+            <li>Toque em <strong>⋯</strong> › <strong>Adicionar a esta playlist</strong> e escolha suas músicas.</li>
+          </ol>
+          <a class="btn btn-primary" id="spotifyBtn" href="#" target="_blank" rel="noopener">Abrir no Spotify</a>
+          <p class="muted" id="spotifySoon" hidden>O link da playlist sai em breve. Volta aqui daqui a pouquinho!</p>
+        </div>
+      </div>
+
+      <div class="embed" id="spotifyEmbed" hidden></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p class="hand">Lud · 21 · 09.01</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="config.js"></script>
+  <script src="gifts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
